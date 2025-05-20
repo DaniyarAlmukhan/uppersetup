@@ -6,11 +6,11 @@ import classes from './styles.module.scss';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const MoviePagination = () => {
-  const { totalCount, page, setPage, query } = useMovieContext();
+  const { totalCount, page, setPage, query, moviesList } = useMovieContext();
 
   const totalPages = Math.ceil(totalCount / 10);
 
-  if (!query || totalPages <= 1) return null;
+  if (!query || totalPages <= 1 || moviesList.length === 0) return null;
 
   const handlePageClick = (newPage: number) => {
     if (newPage < 1 || newPage > totalPages || page === newPage) return;
