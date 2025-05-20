@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { getMovieDetailsById } from '@/requests/omdb.request';
 import { LoaderCircle } from 'lucide-react';
 import MovieDetailsModal from './movie-details-modal.component';
+import { useQuery } from '@tanstack/react-query';
 
 interface IProps {
   movie: Movie;
@@ -13,8 +14,8 @@ interface IProps {
 export const NA = 'N/A';
 
 const MovieCard: FC<IProps> = ({ movie }) => {
-  const [details, setDetails] = useState<MovieDetails | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  // const [details, setDetails] = useState<MovieDetails | null>(null);
+  // const [loading, setLoading] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isFavourite, setIsFavourite] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false; // SSR guard
@@ -22,19 +23,21 @@ const MovieCard: FC<IProps> = ({ movie }) => {
     return favourites.includes(movie.imdbID);
   });
 
-  const handleMouseEnter = async () => {
-    if (!details) {
-      setLoading(true);
-      getMovieDetailsById(movie.imdbID)
-        .then((res) => {
-          setDetails(res.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-        .finally(() => {
-          setLoading(false);
-        })
+  const {
+    data: details,
+    isLoading,
+    refetch,
+    isFetched,
+  } = useQuery<MovieDetails>({
+    queryKey: ['movieDetails', movie.imdbID],
+    queryFn: () => getMovieDetailsById(movie.imdbID).then(res => res.data),
+    enabled: false, 
+    staleTime: 1000 * 60 * 60, 
+  });
+
+  const handleMouseEnter = () => {
+    if (!isFetched) {
+      refetch();
     }
   };
 
@@ -69,7 +72,7 @@ const MovieCard: FC<IProps> = ({ movie }) => {
 
         <div className={classes.movies__card__overlay}>
           {
-            loading
+            isLoading
               ? <div className={classes.movies__card__loader}>
                 <LoaderCircle className={classes.spinner} />
               </div>

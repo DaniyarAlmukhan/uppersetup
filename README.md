@@ -2,7 +2,19 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +26,91 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ENGLISH VERSION IS BELOW RUSSIAN
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## UPPERSETUP CINEMA APP
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+UPPERSETUP CINEMA APP — это веб-приложение, позволяющее искать фильмы по названию, просматривать их подробную информацию и добавлять любимые фильмы в избранное.
 
-## Learn More
+Данные поступают из OMDb API.
 
-To learn more about Next.js, take a look at the following resources:
+## Архитектура
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Проект построен на Next.js с использованием TypeScript и SCSS-модулей.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Основные компоненты:
 
-## Deploy on Vercel
+Header — включает лого, строку поиска и переключатель тем (тёмная/светлая).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MovieCard — карточка фильма с базовой информацией, возможностью открыть подробности и добавить в избранное.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Modal — модальное окно с расширенной информацией о фильме.
+
+Pagination — пагинация по 10 элементов на страницу.
+
+Контексты:
+
+MovieContext — хранит список фильмов, отображаемых на текущей странице
+ThemeContext — тема приложения (тёмная/светлая).
+
+Используется app-директория
+
+## Реализованные фичи
+Пагинация - внизу страницы с фильмами
+
+Модалка с подробной информацией - по кнопке More Info на карточке фильма
+
+Кэширование с React Query
+
+Система избранного — можно добавлять фильмы в избранное, данные хранятся в localStorage
+
+Адаптивная тёмная/светлая тема
+
+
+## UPPERSETUP CINEMA APP
+
+UPPERSETUP CINEMA APP is a web application that allows searching movies by title, viewing detailed information about them, and adding favorite movies to favorites.
+
+Data is fetched from the OMDb API.
+
+## Architecture
+
+The project is built with Next.js using TypeScript and SCSS modules.
+
+Main components:
+
+Header — includes logo, search bar, and theme switcher (dark/light).
+
+MovieCard — a movie card with basic info, ability to open details and add to favorites.
+
+Modal — modal window with detailed movie information.
+
+Pagination — pagination with 10 items per page.
+
+Contexts:
+
+MovieContext — stores the list of movies shown on the current page
+
+ThemeContext — application theme (dark/light).
+
+The /app is user for routing .
+
+## Implemented features
+
+Pagination — at the bottom of the movies page
+
+Modal with detailed information — you can view it by the "More Info" button on the movie card
+
+Caching with React Query
+
+Favorites system — allows adding movies to favorites, data stored in localStorage
+
+Adaptive dark/light theme
+
+
+
+
+
+
+
+

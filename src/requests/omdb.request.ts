@@ -1,6 +1,6 @@
 import api from './api';
 
-const apiKey = 'f870b6af';
+const apiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY as string;
 const apiUrl = `http://www.omdbapi.com`;
 
 export const getMoviesListBySearch = async (search: string, page = 1) => {

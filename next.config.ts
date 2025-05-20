@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  env: {
+    OMDB_API_KEY: process.env.OMDB_API_KEY,
+  },
 };
 
 export default nextConfig;
