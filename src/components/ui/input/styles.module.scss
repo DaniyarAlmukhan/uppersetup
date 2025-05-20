@@ -1,0 +1,33 @@
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 0.75rem;
+  height: 40px;
+  background: #fff;
+  flex: 1;
+
+  &:focus-within {
+    border-color: #666;
+  }
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1.2rem;
+}
+
+.custom-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background: none;
+  min-width: 0;
+  color: #000;
+}

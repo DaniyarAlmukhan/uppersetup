@@ -1,0 +1,37 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  gap: 1.25rem;
+  border-bottom: #ccc;
+
+  &__logo {
+    padding: 0 0.5rem;
+    background: var(--primary-color);
+  }
+
+  &__search {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  &__theme {
+    cursor: pointer;
+  }
+
+  .clickable {
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    &__logo {
+      display: none;
+    }
+
+    &__search {
+      max-width: 100%;
+    }
+  }
+}
