@@ -21,18 +21,16 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, []);
 
   useEffect(() => {
-    if (!isMounted) return;
-
     localStorage.setItem('theme', theme);
     document.body.classList.remove(theme === 'light' ? 'dark' : 'light');
-    document.body.classList.add(theme);
+    document.body.classList.add(theme); 
   }, [theme, isMounted]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  if (!isMounted) return null;
+  if (!isMounted) return <div className="theme-loader" />;
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>

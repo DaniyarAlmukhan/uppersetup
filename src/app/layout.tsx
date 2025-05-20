@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/layout/header.component";
 import { MovieProvider } from "@/contexts/movie.context";
 import { ThemeProvider } from "@/contexts/theme.context";
 
@@ -19,7 +18,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <MovieProvider>
-            <Header />
+            {/* <Header /> */}
             {children}
           </MovieProvider>
         </ThemeProvider>

@@ -1,8 +1,8 @@
 'use client';
 
-import { useDebounce } from "@/hooks/useDebounce";
+import { useDebounce } from "@/hooks/useDebounce.hook";
 import { getMoviesListBySearch } from "@/requests/omdb.request";
-import { Movie } from "@/types/movie";
+import { Movie } from "@/types/movie.type";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type MovieContextType = {
@@ -36,6 +36,7 @@ export const MovieProvider = ({ children }: { children: React.ReactNode }) => {
           if (!response.data.Search) {
             setMoviesList([]);
           } else {
+            console.log(response.data.Search);
             setMoviesList(response.data.Search);
             setTotalCount(Number(response.data.totalResults));
           }

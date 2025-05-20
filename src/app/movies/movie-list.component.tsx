@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 import MovieCard from './movie-card.component'
 import classes from './styles.module.scss'
 import Skeleton from '@/components/ui/skeleton/skeleton.component'
-import { Movie } from '@/types/movie'
+import { Movie } from '@/types/movie.type'
 
 const arr = new Array(20).fill(0)
 
