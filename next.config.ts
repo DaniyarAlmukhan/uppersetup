@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'm.media-amazon.com',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
+        pathname: '/w40/**',
+      },
     ],
   },
   env: {

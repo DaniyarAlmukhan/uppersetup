@@ -32,7 +32,7 @@ ENGLISH VERSION IS BELOW RUSSIAN
 
 UPPERSETUP CINEMA APP — это веб-приложение, позволяющее искать фильмы по названию, просматривать их подробную информацию и добавлять любимые фильмы в избранное.
 
-Данные поступают из OMDb API.
+Данные поступают из OMDb API. (Не забудьте добавить NEXT_PUBLIC_OMDB_API_KEY в .env.local)
 
 ## Архитектура
 
@@ -71,7 +71,7 @@ ThemeContext — тема приложения (тёмная/светлая).
 
 UPPERSETUP CINEMA APP is a web application that allows searching movies by title, viewing detailed information about them, and adding favorite movies to favorites.
 
-Data is fetched from the OMDb API.
+Data is fetched from the OMDb API. (Don't forget to add NEXT_PUBLIC_OMDB_API_KEY to .env.local)
 
 ## Architecture
 

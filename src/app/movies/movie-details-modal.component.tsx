@@ -3,7 +3,7 @@ import classes from "./styles.module.scss";
 import Modal from "@/components/ui/modal/modal.component";
 import { MovieDetails } from "@/types/movie.type";
 import Image from "next/image";
-import { getMediacriticColor } from "@/utils/helpers";
+import { getEmojiByCountryName, getMediacriticColor } from "@/utils/helpers";
 import { Clock } from "lucide-react";
 import { NA } from "./movie-card.component";
 
@@ -36,7 +36,22 @@ const MovieDetailsModal: React.FC<IProps> = ({ details, isOpen, onClose }) => {
                     </span>}
                 </div>
                 <div className={classes['movies__modal__info']}>
-                    <span className={classes['movies__modal__title']}>{details.Title} ({details.Year})</span>
+                    <span className={classes['movies__modal__title']}>
+                        {details.Title} ({details.Year})
+
+                        <span className={classes['movies__modal__flags']}>
+                            {getEmojiByCountryName(details.Country).map((iconUrl, index) => (
+                                <Image
+                                    key={index}
+                                    src={iconUrl}
+                                    alt={details.Country.split(', ')[index]}
+                                    width={30}
+                                    height={15}
+                                    className={classes['movies__modal__flag']}
+                                />
+                            ))}
+                        </span>
+                    </span>
                     <span className={classes['movies__modal__subtitle']}>
                         {details.Genre !== NA && details.Genre.split(', ').map((genre, index) => (
                             <span key={index} className={classes['movies__modal__subtitle-item']}>{genre}</span>

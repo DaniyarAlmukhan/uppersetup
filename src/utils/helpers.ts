@@ -1,3 +1,7 @@
+
+
+import { getCode, getNameList, overwrite } from 'country-list';
+
 export const getMediacriticColor = (rating: string) => {
     const ratingValue = parseFloat(rating);
     if (ratingValue >= 81) {
@@ -12,3 +16,24 @@ export const getMediacriticColor = (rating: string) => {
         return 'darkred';
     }
 }
+
+overwrite([
+    { code: 'US', name: 'United States' },
+    { code: 'GB', name: 'United Kingdom' },
+]);
+
+export const getEmojiByCountryName = (countryName: string) => {
+    const names = countryName.split(', ');
+    const codes = names.map(name => getCode(name));
+
+    if (!!codes.length) {
+        const iconUrls = codes.map(code => {
+            if (!code) return '';
+            const iconUrl = `https://flagcdn.com/w40/${code.toLowerCase()}.png`;
+            console.log(`Icon URL: ${iconUrl}`);
+            return iconUrl;
+        });
+        return iconUrls;
+    }
+    return [];
+};
